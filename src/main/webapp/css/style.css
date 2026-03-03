@@ -3,6 +3,9 @@
     padding: 50px;
     text-align: center;
     background-color: #e6f0ff;
+    body { font-family: Arial; background: #f4f4f4; }
+    table { width: 50%; border-collapse: collapse; background: white; }
+    td, th { border: 1px solid #ddd; padding: 8px; }
 }
 
 

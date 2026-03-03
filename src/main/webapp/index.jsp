@@ -4,19 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <title>e-Social Systems</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
+
 <section class="welcome">
   <h1>Bienvenue sur e-Social Systems</h1>
   <p>Gérez facilement les employeurs, les assurés et les déclarations sociales.</p>
 </section>
-<h1><%= "Hello World!" %></h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-<h2> home page</h2>
-<br/>
-<a href="home_page">welcome to home pages</a>
-</body>
 
+<h2>Home page</h2>
+
+<br/>
+<a href="${pageContext.request.contextPath}/hello-servlet">Hello Servlet</a>
+<br/><br/>
+<a href="${pageContext.request.contextPath}/employeurs">Voir les employeurs</a>
+</body>
 </html>
