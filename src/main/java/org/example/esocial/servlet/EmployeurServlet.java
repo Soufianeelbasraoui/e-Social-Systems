@@ -9,13 +9,12 @@ import java.io.IOException;
 
 @WebServlet("/employeurs")
 public class EmployeurServlet extends HttpServlet {
-    private final EmployeurService service = new EmployeurService();
+    private  EmployeurService service = new EmployeurService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        // Logique pour consulter un employeur par ID
         if ("details".equals(action)) {
             int id = Integer.parseInt(request.getParameter("id"));
             Employeur emp = service.trouverParId(id);

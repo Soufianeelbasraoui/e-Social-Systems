@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-  <a href="${pageContext.request.contextPath}/employeurs">← Retour à la liste</a>
+  <a href="${pageContext.request.contextPath}/employeurs"> Retour à la liste</a>
 
   <div class="profile-header card">
     <div class="info">

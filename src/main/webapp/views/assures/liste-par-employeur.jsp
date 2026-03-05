@@ -46,14 +46,7 @@
         <td>${a.id}</td>
         <td>${a.nom}</td>
         <td><strong>${a.salaireMensuel} €</strong></td>
-        <td>
-          <form action="${pageContext.request.contextPath}/assures?action=updateSalaire" method="post" style="display:inline;">
-            <input type="hidden" name="id" value="${a.id}">
-            <input type="hidden" name="employeurId" value="${employeurId}">
-            <input type="number" step="0.01" name="salaire" value="${a.salaireMensuel}" style="width: 100px;">
-            <button type="submit" class="btn-update">Modifier</button>
-          </form>
-        </td>
+
       </tr>
     </c:forEach>
 

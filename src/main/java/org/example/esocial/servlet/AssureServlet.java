@@ -1,43 +1,64 @@
-
 package org.example.esocial.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.example.esocial.service.AssureService;
+import org.example.esocial.model.Assure;
+
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/assures")
 public class AssureServlet extends HttpServlet {
-    private final AssureService service = new AssureService();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String empIdStr = request.getParameter("employeurId");
+    private AssureService service = new AssureService();
 
-        if (empIdStr != null) {
-            int empId = Integer.parseInt(empIdStr);
-            request.setAttribute("assures", service.listerParEmployeur(empId));
-            request.setAttribute("employeurId", empId);
-            request.getRequestDispatcher("/views/assures/liste-par-employeur.jsp").forward(request, response);
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String employeurId = request.getParameter("employeurId");
+
+        if (employeurId != null) {
+
+            int id = Integer.parseInt(employeurId);
+
+            List<Assure> assures = service.listerParEmployeur(id);
+
+            request.setAttribute("assures", assures);
+            request.setAttribute("employeurId", id);
+
         } else {
-            request.setAttribute("assures", service.listerTout());
-            request.getRequestDispatcher("/views/assures/liste-assures.jsp").forward(request, response);
+            List<Assure> assures = service.listerTout();
+            request.setAttribute("assures", assures);
         }
+        request.getRequestDispatcher("/views/assures/liste-assures.jsp")
+                .forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
         String action = request.getParameter("action");
 
         if ("add".equals(action)) {
+
             String nom = request.getParameter("nom");
-            Double salaire = Double.parseDouble(request.getParameter("salaire"));
+            double salaire = Double.parseDouble(request.getParameter("salaire"));
             int empId = Integer.parseInt(request.getParameter("employeurId"));
             service.ajouterAssure(nom, salaire, empId);
             response.sendRedirect("assures?employeurId=" + empId);
-        } else if ("updateSalaire".equals(action)) {
+        }
+
+        if ("updateSalaire".equals(action)) {
+
             int id = Integer.parseInt(request.getParameter("id"));
-            Double salaire = Double.parseDouble(request.getParameter("salaire"));
+            double salaire = Double.parseDouble(request.getParameter("salaire"));
+
             service.modifierSalaire(id, salaire);
+
             response.sendRedirect("assures");
         }
     }
