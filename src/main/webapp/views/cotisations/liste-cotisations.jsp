@@ -9,12 +9,23 @@
 <div class="container">
   <h2>Cotisations pour la Déclaration n°${declarationId}</h2>
   <h3>Déclaration de ${declaration.mois}/${declaration.annee}</h3>
-  <p>Employeur : ${declaration.employeur.raisonSociale}</p>
+  <p>Employeur : <strong>${declaration.employeur.raisonSociale}</strong></p>
 
-  <c:set var="tauxS" value="5.0" />
-  <c:set var="tauxP" value="10.0" />
-  <c:set var="totalEmployeur" value="0.0" />
-  <table border="1">
+  <section class="card" style="margin-bottom: 20px;">
+    <h3>Ajouter un assuré à cette déclaration</h3>
+    <form action="${pageContext.request.contextPath}/cotisations" method="post" class="horizontal-form">
+      <input type="hidden" name="declarationId" value="${declarationId}">
+      <select name="assureId" required>
+        <option value="">-- Choisir un employé --</option>
+        <c:forEach items="${assures}" var="a">
+          <option value="${a.id}">${a.nom} (Salaire: ${a.salaireMensuel} €)</option>
+        </c:forEach>
+      </select>
+      <button type="submit" class="btn-save">Enregistrer Salaire</button>
+    </form>
+  </section>
+
+  <table border="1" class="data-table">
     <thead>
     <tr>
       <th>Assuré</th>
@@ -22,6 +33,7 @@
       <th>Part Patronale (20%)</th>
       <th>Part Salariale (7%)</th>
       <th>Total Cotisation</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -32,6 +44,9 @@
         <td style="color: blue;">${c.cotisationPatronale} €</td>
         <td style="color: green;">${c.cotisationSalariale} €</td>
         <td><strong>${c.cotisationPatronale + c.cotisationSalariale} €</strong></td>
+        <td>
+          <a href="${pageContext.request.contextPath}/assures?action=releve&id=${c.assure.id}" class="btn">Voir Relevé</a>
+        </td>
       </tr>
     </c:forEach>
     </tbody>
@@ -39,6 +54,7 @@
     <tr style="background: #f0f0f0;">
       <td colspan="4" style="text-align: right;"><strong>Total Général :</strong></td>
       <td><strong>${declaration.montantTotal} €</strong></td>
+      <td></td>
     </tr>
     </tfoot>
   </table>

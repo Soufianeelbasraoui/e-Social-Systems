@@ -71,4 +71,5 @@ public class AssureService {
             em.close();
         }
     }
+
 }

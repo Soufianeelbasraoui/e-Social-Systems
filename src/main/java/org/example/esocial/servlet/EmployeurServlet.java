@@ -26,6 +26,7 @@ public class EmployeurServlet extends HttpServlet {
             request.setAttribute("employeurs", service.listerTout());
             request.getRequestDispatcher("/views/employeurs/liste-employeurs.jsp").forward(request, response);
         }
+
     }
 
     @Override

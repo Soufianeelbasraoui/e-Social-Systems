@@ -5,12 +5,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.example.esocial.service.CotisationService;
 import org.example.esocial.service.DeclarationService;
+import org.example.esocial.service.AssureService;
+import org.example.esocial.model.Declaration;
 import java.io.IOException;
 
 @WebServlet("/cotisations")
 public class CotisationServlet extends HttpServlet {
     private final CotisationService service = new CotisationService();
     private final DeclarationService declarationService = new DeclarationService();
+    private final AssureService assureService = new AssureService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,10 +26,14 @@ public class CotisationServlet extends HttpServlet {
         }
 
         int decId = Integer.parseInt(declarationIdParam);
+        Declaration dec = declarationService.trouverParId(decId);
 
-        request.setAttribute("cotisations", service.listerParDeclaration(decId));
-        request.setAttribute("declarationId", decId);
-        request.setAttribute("declaration", declarationService.trouverParId(decId));
+        if (dec != null) {
+            request.setAttribute("declaration", dec);
+            request.setAttribute("declarationId", decId);
+            request.setAttribute("cotisations", service.listerParDeclaration(decId));
+            request.setAttribute("assures", assureService.listerParEmployeur(dec.getEmployeur().getId()));
+        }
 
         request.getRequestDispatcher("/views/cotisations/liste-cotisations.jsp").forward(request, response);
     }
@@ -37,12 +44,16 @@ public class CotisationServlet extends HttpServlet {
         String decIdParam = request.getParameter("declarationId");
 
         if (assureIdParam != null && decIdParam != null) {
-            int assureId = Integer.parseInt(assureIdParam);
-            int decId = Integer.parseInt(decIdParam);
-            service.genererCotisation(assureId, decId);
-            response.sendRedirect(request.getContextPath() + "/cotisations?declarationId=" + decId);
-        } else {
-            response.sendRedirect(request.getContextPath() + "/declarations");
+            try {
+                int assureId = Integer.parseInt(assureIdParam);
+                int decId = Integer.parseInt(decIdParam);
+                service.genererCotisation(assureId, decId);
+                response.sendRedirect(request.getContextPath() + "/cotisations?declarationId=" + decId);
+                return;
+            } catch (NumberFormatException e) {
+
+            }
         }
+        response.sendRedirect(request.getContextPath() + "/declarations");
     }
 }

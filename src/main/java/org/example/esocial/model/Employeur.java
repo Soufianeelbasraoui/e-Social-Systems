@@ -32,7 +32,6 @@ public class Employeur {
         this.secteurActivite = secteurActivite;
     }
 
-    // Getters et Setters (inchangés)
     public int getId() {
         return id;
     }

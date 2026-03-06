@@ -4,69 +4,45 @@
 <html>
 <head>
     <title>Gestion des Assurés</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 
 <body>
+<div class="container">
+    <h2>Gestion des Assurés</h2>
 
-<h2>Gestion des Assurés</h2>
-
-<section style="margin-bottom:20px;">
-    <h3>Ajouter un assuré</h3>
-
-    <form action="${pageContext.request.contextPath}/assures?action=add" method="post">
-
-
-        <input type="text" name="nom" placeholder="Nom" required>
-
-        <input type="number" step="0.01" name="salaire" placeholder="Salaire" required>
-
-        <button type="submit">Enregistrer</button>
-
-    </form>
-</section>
-
-<table border="1">
-
-    <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Salaire</th>
-        <th>Modifier salaire</th>
-    </tr>
-
-    <c:forEach items="${assures}" var="a">
-
+    <table border="1" class="data-table">
+        <thead>
         <tr>
-
-            <td>${a.id}</td>
-
-            <td>${a.nom}</td>
-
-            <td>${a.salaireMensuel}</td>
-
-            <td>
-
-                <form action="${pageContext.request.contextPath}/assures?action=updateSalaire" method="post">
-
-                    <input type="hidden" name="id" value="${a.id}">
-
-                    <input type="number" name="salaire" value="${a.salaireMensuel}">
-
-                    <button type="submit">Modifier</button>
-
-                </form>
-
-            </td>
-
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Salaire</th>
+            <th>Actions</th>
         </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${assures}" var="a">
+            <tr>
+                <td>${a.id}</td>
+                <td>${a.nom}</td>
+                <td>${a.salaireMensuel} €</td>
+                <td>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <form action="${pageContext.request.contextPath}/assures?action=updateSalaire" method="post" style="display: flex; gap: 5px;">
+                            <input type="hidden" name="id" value="${a.id}">
+                            <input type="number" step="0.01" name="salaire" value="${a.salaireMensuel}" style="width: 80px;">
+                            <button type="submit" class="btn-save">Modifier</button>
+                        </form>
+                        <a href="${pageContext.request.contextPath}/assures?action=releve&id=${a.id}" class="btn-info">Relevé</a>
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
-    </c:forEach>
-
-</table>
-
-<br>
-
-<a href="${pageContext.request.contextPath}/">Retour Dashboard</a>
-
+    <br>
+    <a href="${pageContext.request.contextPath}/" class="btn">Retour Dashboard</a>
+</div>
 </body>
 </html>

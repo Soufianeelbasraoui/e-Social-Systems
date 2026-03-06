@@ -6,7 +6,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Gestion des Assurés - e-Social</title>
-
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
@@ -16,17 +15,13 @@
     <p><strong>Employeur ID :</strong> ${employeurId}</p>
   </header>
 
-  <hr>
-  <section class="add-form">
+  <section class="card">
     <h3>Déclarer un nouvel employé</h3>
-    <form action="${pageContext.request.contextPath}/assures?action=add" method="post">
+    <form action="${pageContext.request.contextPath}/assures?action=add" method="post" class="horizontal-form">
       <input type="hidden" name="employeurId" value="${employeurId}">
-
-      <div class="form-group">
-        <input type="text" name="nom" placeholder="Nom de l'employé" required>
-        <input type="number" step="0.01" name="salaire" placeholder="Salaire mensuel (ex: 4500.00)" required>
-        <button type="submit" class="btn-save">Ajouter l'employé</button>
-      </div>
+      <input type="text" name="nom" placeholder="Nom de l'employé" required>
+      <input type="number" step="0.01" name="salaire" placeholder="Salaire mensuel" required>
+      <button type="submit" class="btn-save">Ajouter</button>
     </form>
   </section>
 
@@ -37,7 +32,7 @@
       <th>ID</th>
       <th>Nom de l'Assuré</th>
       <th>Salaire Mensuel</th>
-      <th>Mise à jour Salaire</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -46,7 +41,9 @@
         <td>${a.id}</td>
         <td>${a.nom}</td>
         <td><strong>${a.salaireMensuel} €</strong></td>
-
+        <td>
+            <a href="${pageContext.request.contextPath}/assures?action=releve&id=${a.id}" class="btn-info">Relevé de droits</a>
+        </td>
       </tr>
     </c:forEach>
 
@@ -59,7 +56,7 @@
   </table>
 
   <footer style="margin-top: 20px;">
-    <a href="${pageContext.request.contextPath}/employeurs" class="btn-back">← Retour à la liste des employeurs</a>
+    <a href="${pageContext.request.contextPath}/employeurs" class="btn">← Retour à la liste des employeurs</a>
   </footer>
 </div>
 </body>

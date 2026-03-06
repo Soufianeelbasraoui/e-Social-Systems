@@ -38,6 +38,7 @@ public class AssureServlet extends HttpServlet {
             return;
         }
 
+
         List<Assure> assures = service.listerTout();
         request.setAttribute("assures", assures);
         request.getRequestDispatcher("/views/assures/liste-assures.jsp").forward(request, response);
@@ -67,5 +68,6 @@ public class AssureServlet extends HttpServlet {
 
             response.sendRedirect("assures");
         }
+
     }
 }

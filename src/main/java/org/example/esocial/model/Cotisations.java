@@ -19,12 +19,12 @@ public class Cotisations {
 
     @ManyToOne
     @JoinColumn(name = "declaration_id", nullable = false)
-    private Declaration declaration; //
+    private Declaration declaration;
 
 
     @ManyToOne
     @JoinColumn(name = "assure_id", nullable = false)
-    private Assure assure; //
+    private Assure assure;
 
     public Cotisations() {}
 

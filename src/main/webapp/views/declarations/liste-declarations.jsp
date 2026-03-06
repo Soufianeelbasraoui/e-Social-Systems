@@ -12,7 +12,6 @@
 
     <h2>Déclarations Sociales - Employeur n° ${employeurId}</h2>
 
-    <!-- Formulaire création déclaration -->
 
     <h3>Créer une déclaration</h3>
     <form action="${pageContext.request.contextPath}/declarations" method="post">
@@ -55,8 +54,6 @@
     </form>
 
     <hr>
-
-    <!-- Liste des déclarations -->
 
     <h3>Liste des déclarations</h3>
 

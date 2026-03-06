@@ -32,6 +32,8 @@
       </form>
     </div>
 
+
+  </form>
     <div class="card">
       <h3>Employés rattachés (${employeur.assures.size()})</h3>
       <table border="1" class="data-table">

@@ -9,7 +9,6 @@ import java.util.List;
 
 public class EmployeurService {
 
-    // 1. Ajouter un employeur
     public void enregistrerEmployeur(String nom, String secteur) {
         if (nom != null && !nom.trim().isEmpty()) {
             EntityManager em = DBConnection.getEntityManager();
@@ -28,7 +27,6 @@ public class EmployeurService {
         }
     }
 
-    // 2. Consulter la liste des employeurs
     public List<Employeur> listerTout() {
         EntityManager em = DBConnection.getEntityManager();
         try {
@@ -38,13 +36,11 @@ public class EmployeurService {
         }
     }
 
-    // 3. Consulter un employeur par ID
     public Employeur trouverParId(int id) {
         EntityManager em = DBConnection.getEntityManager();
         try {
             Employeur emp = em.find(Employeur.class, id);
             if (emp != null) {
-                // On force le chargement des deux listes
                 emp.getAssures().size();
                 emp.getDeclarations().size();
             }
@@ -57,10 +53,9 @@ public class EmployeurService {
         EntityManager em = DBConnection.getEntityManager();
         try {
             em.getTransaction().begin();
-            // On récupère l'employeur existant
+
             Employeur emp = em.find(Employeur.class, employeurId);
             if (emp != null) {
-                // On crée l'assuré lié à cet employeur
                 Assure assure = new Assure(nomAssure, salaire, emp);
                 em.persist(assure);
             }

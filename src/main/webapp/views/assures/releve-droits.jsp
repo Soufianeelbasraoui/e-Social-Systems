@@ -52,7 +52,7 @@
     </table>
 
     <p style="margin-top: 20px;">
-        <a href="${pageContext.request.contextPath}/assures?employeurId=${assure.employeur.id}">← Retour à la liste</a>
+        <a href="${pageContext.request.contextPath}/declarations" class="btn">Retour aux déclarations</a>
     </p>
 </div>
 </body>

@@ -10,43 +10,37 @@
     <h3>Déclaration de ${declaration.mois}/${declaration.annee}</h3>
     <p>Employeur : ${declaration.employeur.raisonSociale}</p>
 
-    <c:set var="tauxS" value="5.0" />
-    <c:set var="tauxP" value="10.0" />
-    <c:set var="totalEmployeur" value="0.0" />
-
-    <table border="1">
+    <table border="1" class="data-table">
         <thead>
         <tr>
             <th>Employé</th>
             <th>Salaire déclaré</th>
-            <th>Part Salariale (${tauxS}%)</th>
-            <th>Part Patronale (${tauxP}%)</th>
+            <th>Part Salariale (7%)</th>
+            <th>Part Patronale (20%)</th>
             <th>Total Cotisation</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${declaration.cotisations}" var="c">
-            <c:set var="partS" value="${c.cotisationSalariale != null ? c.cotisationSalariale : 0}" />
-            <c:set var="partP" value="${c.cotisationPatronale != null ? c.cotisationPatronale : 0}" />
             <tr>
                 <td>${c.assure.nom}</td>
                 <td>${c.assure.salaireMensuel} €</td>
-                <td>${partS} €</td>
-                <td>${partP} €</td>
-                <td><strong>${partS + partP} €</strong></td>
+                <td>${c.cotisationSalariale} €</td>
+                <td>${c.cotisationPatronale} €</td>
+                <td><strong>${c.cotisationSalariale + c.cotisationPatronale} €</strong></td>
             </tr>
-            <c:set var="totalEmployeur" value="${totalEmployeur + partS + partP}" />
         </c:forEach>
         </tbody>
         <tfoot>
-        <tr>
-            <td colspan="4">TOTAL À PAYER PAR L'EMPLOYEUR</td>
-            <td>${totalEmployeur} €</td>
+        <tr style="background: #eee;">
+            <td colspan="4" style="text-align: right;"><strong>TOTAL À PAYER PAR L'EMPLOYEUR</strong></td>
+            <td><strong>${declaration.montantTotal} €</strong></td>
         </tr>
         </tfoot>
     </table>
 
-    <a href="${pageContext.request.contextPath}/declarations?employeurId=${declaration.employeur.id}">Retour</a>
+    <br>
+    <a href="${pageContext.request.contextPath}/declarations" class="btn">Retour</a>
 </div>
 </body>
 </html>
