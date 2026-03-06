@@ -22,12 +22,11 @@
       <h3>Associer un nouvel employé</h3>
       <form action="${pageContext.request.contextPath}/assures?action=add" method="post">
         <input type="hidden" name="employeurId" value="${employeur.id}">
-
         <label>Nom de l'employé</label>
-        <input type="text" name="nom" required placeholder="Ex: Jean Dupont">
+        <input type="text" name="nom" required placeholder="Ex: Jean Dupont"><br><br>
 
         <label>Salaire Mensuel Brut</label>
-        <input type="number" name="salaire" step="0.01" required placeholder="0.00 €">
+        <input type="number" name="salaire" step="0.01" required placeholder="0.00 €"><br>
 
         <button type="submit" class="btn-block">Lier l'employé</button>
       </form>

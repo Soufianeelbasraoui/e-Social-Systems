@@ -27,7 +27,6 @@ public class CotisationServlet extends HttpServlet {
 
         service.genererCotisation(assureId, decId);
 
-        // On rafraîchit la page des cotisations de cette déclaration
         response.sendRedirect(request.getContextPath() + "/cotisations?declarationId=" + decId);
     }
 }

@@ -31,10 +31,15 @@
       <p>Liste globale des employés, mise à jour des salaires et suivi des affiliations.</p>
     </a>
 
-    <a href="${pageContext.request.contextPath}/employeurs" class="card">
+    <a href="${pageContext.request.contextPath}/declarations" class="card">
       <div class="icon"></div>
       <h3>Déclarations</h3>
       <p>Ouvrir une période de déclaration mensuelle et calculer les cotisations.</p>
+    </a>
+    <a href="${pageContext.request.contextPath}/cotisations" class="card">
+      <div class="icon"></div>
+      <h3>Cotisations</h3>
+      <p>Le système doit calculer automatiquement les cotisations sociales..</p>
     </a>
   </div>
 

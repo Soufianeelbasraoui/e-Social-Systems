@@ -8,7 +8,12 @@
 <body>
 <div class="container">
   <h2>Cotisations pour la Déclaration n°${declarationId}</h2>
+  <h3>Déclaration de ${declaration.mois}/${declaration.annee}</h3>
+  <p>Employeur : ${declaration.employeur.raisonSociale}</p>
 
+  <c:set var="tauxS" value="5.0" />
+  <c:set var="tauxP" value="10.0" />
+  <c:set var="totalEmployeur" value="0.0" />
   <table border="1">
     <thead>
     <tr>

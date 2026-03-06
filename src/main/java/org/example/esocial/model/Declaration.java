@@ -1,6 +1,7 @@
 package org.example.esocial.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class Declaration {
     private int annee;
     private Double montantTotal;
 
+    private LocalDate dateDeclaration;
+
     @ManyToOne
     @JoinColumn(name = "employeur_id", nullable = false)
     private Employeur employeur;
@@ -22,26 +25,37 @@ public class Declaration {
     @OneToMany(mappedBy = "declaration", cascade = CascadeType.ALL)
     private List<Cotisations> cotisations = new ArrayList<>();
 
+    // Constructeur par défaut
     public Declaration() {}
 
+    // Constructeur principal
     public Declaration(int mois, int annee, Employeur employeur) {
         this.mois = mois;
         this.annee = annee;
         this.employeur = employeur;
         this.montantTotal = 0.0;
+        this.dateDeclaration = LocalDate.now(); // تاريخ اليوم تلقائياً
     }
 
-    // Getters et Setters
+    // ===== Getters et Setters =====
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
     public int getMois() { return mois; }
     public void setMois(int mois) { this.mois = mois; }
+
     public int getAnnee() { return annee; }
     public void setAnnee(int annee) { this.annee = annee; }
+
     public Double getMontantTotal() { return montantTotal; }
     public void setMontantTotal(Double montantTotal) { this.montantTotal = montantTotal; }
+
+    public LocalDate getDateDeclaration() { return dateDeclaration; }
+    public void setDateDeclaration(LocalDate dateDeclaration) { this.dateDeclaration = dateDeclaration; }
+
     public Employeur getEmployeur() { return employeur; }
     public void setEmployeur(Employeur employeur) { this.employeur = employeur; }
+
     public List<Cotisations> getCotisations() { return cotisations; }
     public void setCotisations(List<Cotisations> cotisations) { this.cotisations = cotisations; }
 }
