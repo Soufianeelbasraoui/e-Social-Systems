@@ -10,6 +10,9 @@ import java.util.List;
 public class DeclarationService {
 
     public void creerDeclaration(int mois, int annee, int employeurId) {
+        if (declarationExiste(employeurId, mois, annee)) {
+            return;
+        }
         EntityManager em = DBConnection.getEntityManager();
         try {
             em.getTransaction().begin();
@@ -28,8 +31,8 @@ public class DeclarationService {
         EntityManager em = DBConnection.getEntityManager();
         try {
             return em.createQuery(
-                            "SELECT d FROM Declaration d WHERE d.employeur.id = :empId",
-                            Declaration.class)
+                    "SELECT d FROM Declaration d WHERE d.employeur.id = :empId",
+                    Declaration.class)
                     .setParameter("empId", employeurId)
                     .getResultList();
         } finally {
@@ -41,8 +44,8 @@ public class DeclarationService {
         EntityManager em = DBConnection.getEntityManager();
         try {
             List<Declaration> res = em.createQuery(
-                            "SELECT d FROM Declaration d WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee",
-                            Declaration.class)
+                    "SELECT d FROM Declaration d WHERE d.employeur.id = :empId AND d.mois = :mois AND d.annee = :annee",
+                    Declaration.class)
                     .setParameter("empId", employeurId)
                     .setParameter("mois", mois)
                     .setParameter("annee", annee)
@@ -62,28 +65,13 @@ public class DeclarationService {
             em.close();
         }
     }
+
+    public Declaration trouverParId(int id) {
+        EntityManager em = DBConnection.getEntityManager();
+        try {
+            return em.find(Declaration.class, id);
+        } finally {
+            em.close();
+        }
+    }
 }
-//public class DeclarationService {
-//
-//    public void creerDeclaration(int mois, int annee, int employeurId) {
-//        EntityManager em = DBConnection.getEntityManager();
-//        try {
-//            em.getTransaction().begin();
-//            Employeur emp = em.find(Employeur.class, employeurId);
-//            if (emp != null) {
-//                Declaration d = new Declaration(mois, annee, emp);
-//                em.persist(d);
-//            }
-//            em.getTransaction().commit();
-//        } finally { em.close(); }
-//    }
-//
-//    public List<Declaration> listerParEmployeur(int employeurId) {
-//        EntityManager em = DBConnection.getEntityManager();
-//        try {
-//            return em.createQuery("SELECT d FROM Declaration d WHERE d.employeur.id = :empId", Declaration.class)
-//                    .setParameter("empId", employeurId)
-//                    .getResultList();
-//        } finally { em.close(); }
-//    }
-//}

@@ -35,6 +35,12 @@
       </tr>
     </c:forEach>
     </tbody>
+    <tfoot>
+    <tr style="background: #f0f0f0;">
+      <td colspan="4" style="text-align: right;"><strong>Total Général :</strong></td>
+      <td><strong>${declaration.montantTotal} €</strong></td>
+    </tr>
+    </tfoot>
   </table>
 
   <br>

@@ -22,40 +22,73 @@ public class Declaration {
     @JoinColumn(name = "employeur_id", nullable = false)
     private Employeur employeur;
 
-    @OneToMany(mappedBy = "declaration", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "declaration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cotisations> cotisations = new ArrayList<>();
 
-    // Constructeur par défaut
-    public Declaration() {}
+    public Declaration() {
+    }
 
-    // Constructeur principal
     public Declaration(int mois, int annee, Employeur employeur) {
         this.mois = mois;
         this.annee = annee;
         this.employeur = employeur;
         this.montantTotal = 0.0;
-        this.dateDeclaration = LocalDate.now(); // تاريخ اليوم تلقائياً
+        this.dateDeclaration = LocalDate.now();
     }
 
-    // ===== Getters et Setters =====
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public int getMois() { return mois; }
-    public void setMois(int mois) { this.mois = mois; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public int getAnnee() { return annee; }
-    public void setAnnee(int annee) { this.annee = annee; }
+    public int getMois() {
+        return mois;
+    }
 
-    public Double getMontantTotal() { return montantTotal; }
-    public void setMontantTotal(Double montantTotal) { this.montantTotal = montantTotal; }
+    public void setMois(int mois) {
+        this.mois = mois;
+    }
 
-    public LocalDate getDateDeclaration() { return dateDeclaration; }
-    public void setDateDeclaration(LocalDate dateDeclaration) { this.dateDeclaration = dateDeclaration; }
+    public int getAnnee() {
+        return annee;
+    }
 
-    public Employeur getEmployeur() { return employeur; }
-    public void setEmployeur(Employeur employeur) { this.employeur = employeur; }
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
 
-    public List<Cotisations> getCotisations() { return cotisations; }
-    public void setCotisations(List<Cotisations> cotisations) { this.cotisations = cotisations; }
+    public Double getMontantTotal() {
+        return montantTotal;
+    }
+
+    public void setMontantTotal(Double montantTotal) {
+        this.montantTotal = montantTotal;
+    }
+
+    public LocalDate getDateDeclaration() {
+        return dateDeclaration;
+    }
+
+    public void setDateDeclaration(LocalDate dateDeclaration) {
+        this.dateDeclaration = dateDeclaration;
+    }
+
+    public Employeur getEmployeur() {
+        return employeur;
+    }
+
+    public void setEmployeur(Employeur employeur) {
+        this.employeur = employeur;
+    }
+
+    public List<Cotisations> getCotisations() {
+        return cotisations;
+    }
+
+    public void setCotisations(List<Cotisations> cotisations) {
+        this.cotisations = cotisations;
+    }
 }

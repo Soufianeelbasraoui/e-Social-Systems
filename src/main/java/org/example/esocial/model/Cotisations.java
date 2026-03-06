@@ -8,20 +8,20 @@ public class Cotisations {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; // 'id: int'
+    private int id;
 
     @Column(name = "cotisation_patronale")
-    private Double cotisationPatronale; // 'cotisationPatronale: Double'
+    private Double cotisationPatronale;
 
     @Column(name = "cotisation_salariale")
-    private Double cotisationSalariale; // 'cotisationSalariae: Double'
+    private Double cotisationSalariale;
 
-    // Relation vers la Déclaration (FK_declaration_id)
+
     @ManyToOne
     @JoinColumn(name = "declaration_id", nullable = false)
     private Declaration declaration; //
 
-    // Relation vers l'Assuré (FK_assure_id)
+
     @ManyToOne
     @JoinColumn(name = "assure_id", nullable = false)
     private Assure assure; //
@@ -35,7 +35,6 @@ public class Cotisations {
         this.assure = assure;
     }
 
-    // Getters et Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

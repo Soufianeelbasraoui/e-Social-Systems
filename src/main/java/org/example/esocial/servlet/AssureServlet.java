@@ -21,20 +21,26 @@ public class AssureServlet extends HttpServlet {
         String employeurId = request.getParameter("employeurId");
 
         if (employeurId != null) {
-
             int id = Integer.parseInt(employeurId);
-
             List<Assure> assures = service.listerParEmployeur(id);
-
             request.setAttribute("assures", assures);
             request.setAttribute("employeurId", id);
-
-        } else {
-            List<Assure> assures = service.listerTout();
-            request.setAttribute("assures", assures);
+            request.getRequestDispatcher("/views/assures/liste-assures.jsp").forward(request, response);
+            return;
         }
-        request.getRequestDispatcher("/views/assures/liste-assures.jsp")
-                .forward(request, response);
+
+        String action = request.getParameter("action");
+        if ("releve".equals(action)) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            Assure assure = service.trouverParId(id);
+            request.setAttribute("assure", assure);
+            request.getRequestDispatcher("/views/assures/releve-droits.jsp").forward(request, response);
+            return;
+        }
+
+        List<Assure> assures = service.listerTout();
+        request.setAttribute("assures", assures);
+        request.getRequestDispatcher("/views/assures/liste-assures.jsp").forward(request, response);
     }
 
     @Override

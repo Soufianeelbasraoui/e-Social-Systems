@@ -68,6 +68,7 @@
             <th>Mois</th>
             <th>Année</th>
             <th>Date déclaration</th>
+            <th>Montant Total</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -85,6 +86,8 @@
                 <td>${d.annee}</td>
 
                 <td>${d.dateDeclaration}</td>
+                
+                <td><strong>${d.montantTotal} €</strong></td>
 
                 <td>
                     <a href="${pageContext.request.contextPath}/cotisations?declarationId=${d.id}">

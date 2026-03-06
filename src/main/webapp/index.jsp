@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>e-Social Systems | Dashboard</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
-  </style>
 </head>
 <body>
 
@@ -36,7 +34,7 @@
       <h3>Déclarations</h3>
       <p>Ouvrir une période de déclaration mensuelle et calculer les cotisations.</p>
     </a>
-    <a href="${pageContext.request.contextPath}/cotisations" class="card">
+    <a href="${pageContext.request.contextPath}/declarations" class="card">
       <div class="icon"></div>
       <h3>Cotisations</h3>
       <p>Le système doit calculer automatiquement les cotisations sociales..</p>
