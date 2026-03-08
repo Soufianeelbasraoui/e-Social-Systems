@@ -12,7 +12,7 @@
         <h1>Gestion des Employeurs</h1>
     </div>
 
-    <section id="addForm" class="card" style="margin-bottom: 20px;">
+    <section id="addForm" >
         <h3>Enregistrer une nouvelle entreprise</h3>
         <form action="${pageContext.request.contextPath}/employeurs?action=add" method="post" class="horizontal-form">
             <input type="text" name="raisonSociale" placeholder="Raison Sociale" required>
@@ -21,9 +21,9 @@
         </form>
     </section>
 
-    <div class="card">
-        <table border="1" class="data-table">
-            <thead>
+    <div style="margin-top: 10px">
+        <table border="1" style="border-collapse: collapse">
+            <thead  style="background: #eee" >
             <tr>
                 <th>ID</th>
                 <th>Raison Sociale</th>

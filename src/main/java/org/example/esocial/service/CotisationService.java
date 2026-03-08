@@ -31,12 +31,10 @@ public class CotisationService {
                 Cotisations c = new Cotisations(patronal, salarial, dec, assure);
                 em.persist(c);
 
-                double nouveauTotal = (dec.getMontantTotal() != null ? dec.getMontantTotal() : 0.0) + patronal
-                        + salarial;
+                double nouveauTotal = (dec.getMontantTotal() != null ? dec.getMontantTotal() : 0.0) + patronal + salarial;
                 dec.setMontantTotal(nouveauTotal);
                 em.merge(dec);
             }
-
             em.getTransaction().commit();
         } finally {
             em.close();

@@ -59,8 +59,7 @@ public class DeclarationService {
     public List<Declaration> listerToutesDeclarations() {
         EntityManager em = DBConnection.getEntityManager();
         try {
-            return em.createQuery("SELECT d FROM Declaration d JOIN FETCH d.employeur", Declaration.class)
-                    .getResultList();
+            return em.createQuery("SELECT d FROM Declaration d JOIN FETCH d.employeur", Declaration.class).getResultList();
         } finally {
             em.close();
         }

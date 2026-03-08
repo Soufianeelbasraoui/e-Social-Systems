@@ -10,7 +10,7 @@
 <div class="container">
   <a href="${pageContext.request.contextPath}/employeurs"> Retour à la liste</a>
 
-  <div class="profile-header card">
+  <div class="profile-header">
     <div class="info">
       <h1>${employeur.raisonSociale}</h1>
       <p>ID Employeur : <strong>#${employeur.id}</strong> | Secteur : <strong>${employeur.secteurActivite}</strong></p>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="main-grid">
-    <div class="card">
+    <div >
       <h3>Associer un nouvel employé</h3>
       <form action="${pageContext.request.contextPath}/assures?action=add" method="post">
         <input type="hidden" name="employeurId" value="${employeur.id}">
@@ -34,10 +34,10 @@
 
 
   </form>
-    <div class="card">
+    <div style="margin-top: 10px">
       <h3>Employés rattachés (${employeur.assures.size()})</h3>
-      <table border="1" class="data-table">
-        <thead>
+      <table border="1" style="border-collapse: collapse">
+        <thead style="background: #eee">
         <tr>
           <th>Nom</th>
           <th>Salaire</th>

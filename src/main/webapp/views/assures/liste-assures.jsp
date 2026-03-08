@@ -11,8 +11,8 @@
 <div class="container">
     <h2>Gestion des Assurés</h2>
 
-    <table border="1" class="data-table">
-        <thead>
+    <table border="1" style="border-collapse: collapse">
+        <thead  style="background: #eee">
         <tr>
             <th>ID</th>
             <th>Nom</th>

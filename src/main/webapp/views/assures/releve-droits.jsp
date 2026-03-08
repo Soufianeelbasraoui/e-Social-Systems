@@ -3,18 +3,19 @@
 <html>
 <head>
     <title>Relevé de Droits - ${assure.nom}</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">--%>
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
 <div class="container">
     <h2>Relevé de Droits Sociaux : ${assure.nom}</h2>
-
-    <div class="stats-grid" style="display: flex; gap: 20px; margin-bottom: 20px;">
-        <div class="card" style="flex: 1; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+    <div  style="display: flex; gap: 15px; margin-bottom: 15px;">
+        <div style=" white:100px; padding: 10px; border-radius: 5px;border: 1px solid">
             <h4> Ancienneté</h4>
             <p style="font-size: 24px; font-weight: bold;">${assure.cotisations.size()} mois déclarés</p>
         </div>
-        <div class="card" style="flex: 1; padding: 20px; background: #e3f2fd; border-radius: 8px;">
+        <div style="white:100px; padding: 10px; border-radius: 5px; border: 1px solid;">
             <h4>Total des Cotisations</h4>
             <p style="font-size: 24px; font-weight: bold; color: #0d47a1;">
                 <c:set var="total" value="0" />
@@ -27,8 +28,8 @@
     </div>
 
     <h3>Détail des périodes</h3>
-    <table border="1" style="width: 100%; border-collapse: collapse;">
-        <thead style="background: #eee;">
+    <table border="1" style="border-collapse: collapse">
+        <thead  style="background: #eee">
         <tr>
             <th>Période</th>
             <th>Salaire Déclaré</th>

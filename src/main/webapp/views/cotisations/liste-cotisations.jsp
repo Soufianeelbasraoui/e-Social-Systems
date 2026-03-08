@@ -11,7 +11,7 @@
   <h3>Déclaration de ${declaration.mois}/${declaration.annee}</h3>
   <p>Employeur : <strong>${declaration.employeur.raisonSociale}</strong></p>
 
-  <section class="card" style="margin-bottom: 20px;">
+  <section >
     <h3>Ajouter un assuré à cette déclaration</h3>
     <form action="${pageContext.request.contextPath}/cotisations" method="post" class="horizontal-form">
       <input type="hidden" name="declarationId" value="${declarationId}">
@@ -25,8 +25,8 @@
     </form>
   </section>
 
-  <table border="1" class="data-table">
-    <thead>
+  <table border="1"  style="border-collapse: collapse">
+    <thead   style="background: #eee">
     <tr>
       <th>Assuré</th>
       <th>Salaire Base</th>

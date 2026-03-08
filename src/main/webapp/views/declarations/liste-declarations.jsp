@@ -53,13 +53,12 @@
 
     </form>
 
-    <hr>
+
 
     <h3>Liste des déclarations</h3>
 
-    <table border="1">
-
-        <thead>
+    <table border="1" style="border-collapse: collapse">
+        <thead  style="background: #eee">
         <tr>
             <th>ID</th>
             <th>Mois</th>
@@ -69,23 +68,14 @@
             <th>Actions</th>
         </tr>
         </thead>
-
         <tbody>
-
         <c:forEach items="${declarations}" var="d">
-
             <tr>
-
                 <td>${d.id}</td>
-
                 <td>${d.mois}</td>
-
                 <td>${d.annee}</td>
-
                 <td>${d.dateDeclaration}</td>
-                
                 <td><strong>${d.montantTotal} €</strong></td>
-
                 <td>
                     <a href="${pageContext.request.contextPath}/cotisations?declarationId=${d.id}">
                         Voir cotisations

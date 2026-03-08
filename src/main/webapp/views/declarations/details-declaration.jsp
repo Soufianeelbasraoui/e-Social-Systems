@@ -10,8 +10,8 @@
     <h3>Déclaration de ${declaration.mois}/${declaration.annee}</h3>
     <p>Employeur : ${declaration.employeur.raisonSociale}</p>
 
-    <table border="1" class="data-table">
-        <thead>
+    <table border="1" style="border-collapse: collapse">
+        <thead   style="background: #eee">
         <tr>
             <th>Employé</th>
             <th>Salaire déclaré</th>

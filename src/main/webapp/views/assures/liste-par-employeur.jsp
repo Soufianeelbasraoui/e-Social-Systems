@@ -26,8 +26,8 @@
   </section>
 
   <br>
-  <table border="1" class="data-table">
-    <thead>
+  <table border="1" style="border-collapse: collapse">
+    <thead  style="background: #eee">
     <tr>
       <th>ID</th>
       <th>Nom de l'Assuré</th>

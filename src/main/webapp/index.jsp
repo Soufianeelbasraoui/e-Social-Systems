@@ -38,7 +38,7 @@
   </div>
 
   <footer style="margin-top: 50px; text-align: center; opacity: 0.6;">
-    <small>Session active | <a href="${pageContext.request.contextPath}/hello-servlet">Diagnostic Système</a></small>
+    <small>Session active | <a href="${pageContext.request.contextPath}/index.jsp">Diagnostic Système</a></small>
   </footer>
 </div>
 
